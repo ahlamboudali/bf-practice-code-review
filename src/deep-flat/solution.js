@@ -1,10 +1,14 @@
 /** .........
- * Sum of two numbers.
+ * Flattens a nested array into a single array with no nesting.
+
  *
- * @param {number} num1 - The first number to sum.
- * @param {number} num2 - The second number to sum.
- * @returns {number} The sum of num1 and num2.
+ * @@param {Array} [array=[]] - The array to flatten.
+ * @returns {Array} Returns the new flattened array.
  */
-export const solutionName = (num1, num2) => {
-    return num1 + num2;
+
+
+const deepFlat = (array = []) => {
+    return array.reduce((acc, val) => {
+        return Array.isArray(val) ? acc.concat(deepFlat(val)) : acc.concat(val);
+    }, []);
 };
